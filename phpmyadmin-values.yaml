@@ -1,0 +1,15 @@
+# Configuration du service PHPMyAdmin
+service:
+  type: LoadBalancer  # Utiliser LoadBalancer pour exposer phpMyAdmin
+  port: 8282          # Changer le port d'exposition à 8080 (ou un autre port disponible)
+
+# Configuration de l'Ingress (désactivé ici)
+ingress:
+  enabled: false      # Ingress désactivé, l'accès se fait via LoadBalancer
+
+# Configuration de la base de données
+database:
+  host: mariadb-galera.tasktest.svc.cluster.local  # Nom du service MariaDB Galera dans le namespace taskmanager
+  port: 3306                                           # Port de connexion de MariaDB
+  username: root                                       # Nom d'utilisateur pour la connexion à MariaDB
+  password: rootpassword                               # Mot de passe root de MariaDB (assure-toi qu'il correspond à celui défini)
